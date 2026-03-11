@@ -33,8 +33,8 @@ module "hub_vnet" {
     id     = module.hub_vnet_ddos[0].resource.id
   } : null
 
-   # Role Assignments
-   role_assignments = {
+  # Role Assignments
+  role_assignments = {
     role_assignment_nw_peering = {
       role_definition_id_or_name       = "Network Contributor"
       principal_id                     = data.azurerm_client_config.current.object_id

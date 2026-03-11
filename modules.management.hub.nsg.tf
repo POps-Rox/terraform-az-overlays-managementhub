@@ -19,7 +19,7 @@ module "nsg" {
   location            = local.location
   tags                = merge({ "ResourceName" = lower("nsg_${each.key}") }, local.default_tags, var.add_tags, )
 
-  security_rules =  each.value.nsg_subnet_rules 
+  security_rules = each.value.nsg_subnet_rules
 }
 
 resource "azurerm_subnet_network_security_group_association" "nsgassoc" {

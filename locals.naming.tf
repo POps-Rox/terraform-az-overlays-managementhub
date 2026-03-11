@@ -25,7 +25,7 @@ locals {
   bastion_pip_name = coalesce(var.bastion_pip_custom_name, data.azurenoopsutils_resource_name.bastion_pip.result)
 
   # Private Endpoint
-  pe_name = data.azurenoopsutils_resource_name.pe.result
+  pe_name  = data.azurenoopsutils_resource_name.pe.result
   psc_name = data.azurenoopsutils_resource_name.psc.result
   nic_name = data.azurenoopsutils_resource_name.nic.result
 }

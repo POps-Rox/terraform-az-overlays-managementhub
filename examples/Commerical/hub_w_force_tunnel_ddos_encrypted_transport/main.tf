@@ -6,7 +6,7 @@ module "mod_vnet_hub" {
   #version = "x.x.x"
   source = "../../.."
 
-  depends_on = [ azurerm_log_analytics_workspace.laws ]
+  depends_on = [azurerm_log_analytics_workspace.laws]
 
   ################################
   # Landing Zone Configuration  ##
@@ -47,10 +47,10 @@ module "mod_vnet_hub" {
   existing_log_analytics_workspace_id          = azurerm_log_analytics_workspace.laws.workspace_id
 
   # Enable Encrypted Transport
-  enable_encrypted_transport = var.enable_encrypted_transport
-  encrypted_transport_address_prefix = var.encrypted_transport_address_prefix
+  enable_encrypted_transport                 = var.enable_encrypted_transport
+  encrypted_transport_address_prefix         = var.encrypted_transport_address_prefix
   encrypted_transport_next_hop_in_ip_address = var.encrypted_transport_next_hop_in_ip_address
-  encrypted_transport_next_hop_type = var.encrypted_transport_next_hop_type
+  encrypted_transport_next_hop_type          = var.encrypted_transport_next_hop_type
 
   # (Optional) Enable Flow Logs
   # By default, this will enable flow logs for all subnets.
@@ -102,7 +102,7 @@ module "mod_vnet_hub" {
   azure_bastion_host_sku              = var.azure_bastion_host_sku
   azure_bastion_subnet_address_prefix = var.azure_bastion_subnet_address_prefix
 
-   # CIDRs for Azure Storage Account
+  # CIDRs for Azure Storage Account
   # This will allow the specified CIDRs to bypass the Azure Firewall for Azure Storage Account.
   hub_storage_bypass_ip_cidr = var.hub_storage_bypass_ip_cidr
 

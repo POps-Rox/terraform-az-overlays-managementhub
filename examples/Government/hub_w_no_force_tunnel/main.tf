@@ -21,9 +21,9 @@ module "mod_vnet_hub" {
   workload_name             = var.hub_name
 
   # Provide valid VNet Address space and specify valid domain name for Private DNS Zone.
-  virtual_network_address_space           = var.hub_vnet_address_space              # (Required)  Hub Virtual Network Parameters
-  firewall_subnet_address_prefix          = var.fw_client_snet_address_prefixes     # (Required)  Hub Firewall Subnet Parameters
-  
+  virtual_network_address_space  = var.hub_vnet_address_space          # (Required)  Hub Virtual Network Parameters
+  firewall_subnet_address_prefix = var.fw_client_snet_address_prefixes # (Required)  Hub Firewall Subnet Parameters
+
   # (Optional) Enable DDos Protection Plan
   create_ddos_plan = var.create_ddos_plan
 
@@ -75,7 +75,7 @@ module "mod_vnet_hub" {
 
   # (Optional) By default, this module will create a bastion host,
   # and set the argument to `enable_bastion_host = false`, to disable the bastion host.
-  enable_bastion_host                 = var.enable_bastion_host
+  enable_bastion_host = var.enable_bastion_host
 
   # (Optional) By default, this will apply resource locks to all resources created by this module.
   # To disable resource locks, set the argument to `enable_resource_locks = false`.

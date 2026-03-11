@@ -13,10 +13,10 @@ AUTHOR/S: jrspinella
 #--------------------------------------------------------------------------------------------------------
 
 module "gw_snet" {
-  source  = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version = "0.4.2"
-  depends_on = [ module.hub_vnet ]
-  count   = var.gateway_subnet_address_prefix != null ? 1 : 0
+  source     = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
+  version    = "0.4.2"
+  depends_on = [module.hub_vnet]
+  count      = var.gateway_subnet_address_prefix != null ? 1 : 0
 
   # Resource Name
   name = "GatewaySubnet"
@@ -34,10 +34,10 @@ module "gw_snet" {
 }
 
 module "default_snet" {
-  source   = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version  = "0.4.2"
-  depends_on = [ module.hub_vnet ]
-  for_each = var.hub_subnets
+  source     = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
+  version    = "0.4.2"
+  depends_on = [module.hub_vnet]
+  for_each   = var.hub_subnets
 
   # Resource Name
   name = var.hub_snet_custom_name != null ? format("%s-%s", var.hub_snet_custom_name, each.key) : data.azurenoopsutils_resource_name.snet[each.key].result

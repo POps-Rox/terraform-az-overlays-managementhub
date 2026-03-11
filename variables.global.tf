@@ -14,7 +14,7 @@ variable "location" {
 variable "environment" {
   description = "The Terraform backend environment e.g. public or usgovernment"
   type        = string
-  default = "public"
+  default     = "public"
 }
 
 variable "deploy_environment" {
@@ -67,11 +67,11 @@ variable "existing_resource_group_name" {
 variable "existing_log_analytics_workspace_id" {
   description = "Log Analytics Workspace ID"
   type        = string
-  default = null
+  default     = null
 }
 
 variable "existing_log_analytics_workspace_resource_id" {
   description = "Log Analytics Workspace Resource ID"
   type        = string
-  default = null
+  default     = null
 }

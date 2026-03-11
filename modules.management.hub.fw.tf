@@ -91,9 +91,9 @@ module "hub_firewall_client_pip" {
   // FW PIP Diagnostic Settings
   diagnostic_settings = var.existing_log_analytics_workspace_resource_id != null ? {
     sendToLogAnalytics = {
-      name                           = format("sendToLogAnalytics_%s_fwpip", var.workload_name)
-      workspace_resource_id          = var.existing_log_analytics_workspace_resource_id
-      log_categories                 = ["DDoSProtectionNotifications", "DDoSMitigationFlowLogs","DDoSMitigationReports"]  
+      name                  = format("sendToLogAnalytics_%s_fwpip", var.workload_name)
+      workspace_resource_id = var.existing_log_analytics_workspace_resource_id
+      log_categories        = ["DDoSProtectionNotifications", "DDoSMitigationFlowLogs", "DDoSMitigationReports"]
     }
   } : null
 
@@ -124,9 +124,9 @@ module "hub_firewall_management_pip" {
   // FW PIP Diagnostic Settings
   diagnostic_settings = var.existing_log_analytics_workspace_resource_id != null ? {
     sendToLogAnalytics = {
-      name                           = format("sendToLogAnalytics_%s_fwmgtpip", var.workload_name)
-      workspace_resource_id          = var.existing_log_analytics_workspace_resource_id
-      log_categories                 = ["DDoSProtectionNotifications", "DDoSMitigationFlowLogs","DDoSMitigationReports"]   
+      name                  = format("sendToLogAnalytics_%s_fwmgtpip", var.workload_name)
+      workspace_resource_id = var.existing_log_analytics_workspace_resource_id
+      log_categories        = ["DDoSProtectionNotifications", "DDoSMitigationFlowLogs", "DDoSMitigationReports"]
     }
   } : null
 
@@ -150,7 +150,7 @@ module "hub_fw" {
   firewall_sku_tier   = var.firewall_sku_tier
   firewall_policy_id  = module.hub_firewall_policy[0].resource.id
   firewall_zones      = var.firewall_zones != null ? var.firewall_zones : null
-  
+
   # Firewall Subnet
   firewall_ip_configuration = [
     {
@@ -179,9 +179,9 @@ module "hub_fw" {
   // Bastion Diagnostic Settings
   diagnostic_settings = var.existing_log_analytics_workspace_resource_id != null ? {
     sendToLogAnalytics = {
-      name                           = format("sendToLogAnalytics_%s_fw", var.workload_name)
-      workspace_resource_id          = var.existing_log_analytics_workspace_resource_id
-      log_categories                 = ["AzureFirewallApplicationRule", "AzureFirewallNetworkRule"]      
+      name                  = format("sendToLogAnalytics_%s_fw", var.workload_name)
+      workspace_resource_id = var.existing_log_analytics_workspace_resource_id
+      log_categories        = ["AzureFirewallApplicationRule", "AzureFirewallNetworkRule"]
     }
   } : null
 

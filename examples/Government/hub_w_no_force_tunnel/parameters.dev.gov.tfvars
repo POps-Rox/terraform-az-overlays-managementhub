@@ -157,5 +157,5 @@ hub_private_dns_zones    = []
 
 # By default, this module will create a bastion host,
 # and set the argument to `enable_bastion_host = false`, to disable the bastion host.
-enable_bastion_host                 = false
+enable_bastion_host = false
 

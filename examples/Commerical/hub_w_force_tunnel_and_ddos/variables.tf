@@ -111,7 +111,7 @@ variable "hub_subnets" {
       destination_application_security_group_ids = optional(list(string))
     })))
   }))
-  default     = {}
+  default = {}
 }
 
 variable "create_ddos_plan" {
@@ -158,19 +158,19 @@ variable "enable_firewall" {
 
 variable "firewall_application_rules" {
   description = "List of application rules to apply to firewall."
-  type = any
+  type        = any
   default     = []
 }
 
 variable "firewall_network_rules" {
   description = "List of network rules to apply to firewall."
-  type = any
+  type        = any
   default     = []
 }
 
 variable "firewall_nat_rules" {
   description = "List of nat rules to apply to firewall."
-  type = any
+  type        = any
   default     = []
 }
 

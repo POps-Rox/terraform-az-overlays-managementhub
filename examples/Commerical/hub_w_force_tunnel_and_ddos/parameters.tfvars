@@ -6,7 +6,7 @@
 ###########################
 
 # The prefixes to use for all resources in this deployment
-org_name           = "an1"   # This Prefix will be used on most deployed resources.  10 Characters max.
+org_name           = "an1"    # This Prefix will be used on most deployed resources.  10 Characters max.
 deploy_environment = "dev"    # dev | test | prod
 environment        = "public" # public | usgovernment
 
@@ -105,7 +105,7 @@ firewall_zones = []
 
 # DNS Settings for Azure Firewall
 enable_dns_proxy = true
-dns_servers = [ "168.63.129.16" ] # Azure DNS
+dns_servers      = ["168.63.129.16"] # Azure DNS
 
 # # (Optional) specify the Network rules for Azure Firewall l
 # This is default values, do not need this if keeping default values
@@ -190,7 +190,7 @@ firewall_application_rules = [
 # If you do want to create additional Private DNS Zones,
 # add in the list of hub_private_dns_zones to be created.
 # else, remove the hub_private_dns_zones argument.
-hub_private_dns_zones            = []
+hub_private_dns_zones = []
 
 # By default, this module will create a bastion host,
 # and set the argument to `enable_bastion_host = false`, to disable the bastion host.

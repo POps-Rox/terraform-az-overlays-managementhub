@@ -17,7 +17,7 @@ resource "azurerm_network_watcher_flow_log" "nwflog" {
   storage_account_id        = module.hub_st.resource_id
   enabled                   = true
   version                   = 2
-  
+
   retention_policy {
     enabled = true
     days    = 0

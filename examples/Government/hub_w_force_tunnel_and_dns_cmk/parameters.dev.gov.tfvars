@@ -6,8 +6,8 @@
 ###########################
 
 # The prefixes to use for all resources in this deployment
-org_name           = "an16"   # This Prefix will be used on most deployed resources.  10 Characters max.
-deploy_environment = "dev"    # dev | test | prod
+org_name           = "an16"         # This Prefix will be used on most deployed resources.  10 Characters max.
+deploy_environment = "dev"          # dev | test | prod
 environment        = "usgovernment" # public | usgovernment
 
 # The default region to deploy to

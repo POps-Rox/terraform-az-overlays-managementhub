@@ -8,7 +8,7 @@
 variable "enable_private_dns_zones" {
   type        = bool
   description = "If set to true, will enable the deployment of Private DNS Zones. Default is true."
-  default     = true  
+  default     = true
 }
 
 variable "private_dns_zones" {

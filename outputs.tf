@@ -138,7 +138,7 @@ output "private_dns_zone_resource_ids" {
 
 output "private_dns_zone_names" {
   description = "The names of Private DNS zones within Azure DNS"
-   value = var.enable_private_dns_zones ? { for key, name in zipmap(
+  value = var.enable_private_dns_zones ? { for key, name in zipmap(
     sort(local.if_default_private_dns_zones_enabled),
     sort(values(module.mod_default_pdz)[*]["private_dns_zone_name"])) :
   key => { key = key, name = name } } : null

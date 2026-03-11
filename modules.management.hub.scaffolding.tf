@@ -7,7 +7,6 @@
 # This module will lookup the Azure Region and return the short name for the region
 module "mod_azregions" {
   source  = "github.com/POps-Rox/tf-az-overlays-azregionslookup"
-  version = "1.0.1"
 
   azure_region = var.location
 }
@@ -25,7 +24,6 @@ data "azurerm_resource_group" "rgrp" {
 
 module "mod_scaffold_rg" {
   source  = "github.com/POps-Rox/tf-az-overlays-resourcegroup"
-  version = "1.0.1"
 
   count = var.create_hub_resource_group ? 1 : 0
 
@@ -45,7 +43,6 @@ module "mod_scaffold_rg" {
 #----------------------------------------
 module "mod_dns_rg" {
   source  = "github.com/POps-Rox/tf-az-overlays-resourcegroup"
-  version = "1.0.1"
 
   count = var.enable_private_dns_zones && length(var.private_dns_zones) > 0 ? 1 : 0
 

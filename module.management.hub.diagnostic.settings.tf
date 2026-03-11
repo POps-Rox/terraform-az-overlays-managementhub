@@ -18,7 +18,6 @@ AUTHOR/S: jrspinella
 
 module "mod_vnet_diagnostic_settings" {
   source  = "github.com/POps-Rox/tf-az-overlays-diagnosticsettings"
-  version = "1.5.0"
 
   count = var.existing_log_analytics_workspace_resource_id != null ? 1 : 0
 
@@ -36,7 +35,6 @@ module "mod_vnet_diagnostic_settings" {
 
 module "mod_nsg_diagnostic_settings" {
   source  = "github.com/POps-Rox/tf-az-overlays-diagnosticsettings"
-  version = "1.5.0"
 
   for_each = toset(var.existing_log_analytics_workspace_resource_id != null ? [var.hub_subnets] : [])
 

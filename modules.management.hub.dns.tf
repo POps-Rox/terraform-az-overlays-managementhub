@@ -9,7 +9,7 @@ AUTHOR/S: jrspinella
 */
 
 module "mod_default_pdz" {
-  source     = "azurenoops/overlays-private-dns-zone/azurerm"
+  source     = "github.com/POps-Rox/tf-az-overlays-privatednszone"
   version    = "1.0.2"
   depends_on = [module.mod_dns_rg]
 

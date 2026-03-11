@@ -27,7 +27,7 @@ provider "azurerm" {
 }
 
 module "overlays-management-hub" {
-  source  = "azurenoops/overlays-management-hub/azurerm"
+  source  = "POps-Rox/tf-az-overlays-management-hub/azurerm"
   version = "2.0.0"
 
   location = "usgovvirginia"
@@ -94,7 +94,7 @@ AzureFirewallSubnet and GatewaySubnet will not contain any UDR (User Defined Rou
 
 Source: [Microsoft Azure Hub-Spoke Topology Documentation](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
 
-![Architecture](https://github.com/azurenoops/terraform-azurerm-overlays-management-hub/blob/main/docs/images/mission_enclave_hub_simple.png)
+![Architecture](https://github.com/POps-Rox/tf-az-overlays-management-hub/blob/main/docs/images/mission_enclave_hub_simple.png)
 
 ## Resources Supported
 
@@ -124,7 +124,7 @@ provider "azurerm" {
 }
 
 module "mod_vnet_hub" {
-  source  = "azurenoops/overlays-management-hub/azurerm"
+  source  = "POps-Rox/tf-az-overlays-management-hub/azurerm"
   version = "x.x.x"
 
   # By default, this module will create a resource group, provide the name here
@@ -333,7 +333,7 @@ This module supports enabling the service endpoint of your choosing under the vi
 
 ```hcl
 module "vnet-hub" {
-  source  = "azurenoops/overlays-management-hub/azurerm"
+  source  = "POps-Rox/tf-az-overlays-management-hub/azurerm"
   version = "x.x.x"
 
   # .... omitted
@@ -361,7 +361,7 @@ This module supports enabling the service delegation of your choosing under the 
 
 ```hcl
 module "vnet-hub" {
-  source  = "azurenoops/overlays-management-hub/azurerm"
+  source  = "POps-Rox/tf-az-overlays-management-hub/azurerm"
   version = "x.x.x"
 
   # .... omitted
@@ -397,7 +397,7 @@ This module Enable or Disable network policies for the private link endpoint on 
 
 ```hcl
 module "vnet-hub" {
-  source  = "azurenoops/overlays-management-hub/azurerm"
+  source  = "POps-Rox/tf-az-overlays-management-hub/azurerm"
   version = "x.x.x"
 
   # .... omitted
@@ -427,7 +427,7 @@ This module Enable or Disable network policies for the private link service on t
 
 ```hcl
 module "vnet-hub" {
-  source  = "azurenoops/overlays-management-hub/azurerm"
+  source  = "POps-Rox/tf-az-overlays-management-hub/azurerm"
   version = "x.x.x"
 
   # .... omitted
@@ -494,7 +494,7 @@ Presently, there are two firewall rules configured to ensure access to the Azure
 
 ``` hcl
 module "vnet-hub" {
-  source  = "azurenoops/overlays-management-hub/azurerm"
+  source  = "POps-Rox/tf-az-overlays-management-hub/azurerm"
   version = "x.x.x"
 
 # ....omitted
@@ -557,7 +557,7 @@ This module supports enabling the NSG Rules of your choosing under the virtual n
 
 ```hcl
 module "vnet-hub" {
-  source  = "azurenoops/overlays-management-hub/azurerm"
+  source  = "POps-Rox/tf-az-overlays-management-hub/azurerm"
   version = "x.x.x"
 
   # .... omitted
@@ -621,13 +621,13 @@ By default, this module will not create a force tunnel on the firewall. You can 
 
 ## Enable Encrypted Transport Add-On
 
-"The Encrypted Transport Add-on [Encrypted Transport Add-On](https://github.com/azurenoops/ref-scca-encrypted-transport-native-starter) requires modifications to the Firewall in the form of a new Route Table on the AzureFirewallSubnet as well as a new route. If you decide to use the Encrypted Transport Add-on then set the `enable_encrypted_transport` argument to `true`."
+"The Encrypted Transport Add-on [Encrypted Transport Add-On](https://github.com/POps-Rox/ref-scca-encrypted-transport-native-starter) requires modifications to the Firewall in the form of a new Route Table on the AzureFirewallSubnet as well as a new route. If you decide to use the Encrypted Transport Add-on then set the `enable_encrypted_transport` argument to `true`."
 
 Addition to enabling Encrypted Transport, you will need to add `encrypted_transport_address_prefix`, `encrypted_transport_next_hop_in_ip_address` and `encrypted_transport_next_hop_type` arguments.
 
 ```hcl
 module "vnet-hub" {
-  source  = "azurenoops/overlays-management-hub/azurerm"
+  source  = "POps-Rox/tf-az-overlays-management-hub/azurerm"
   version = "x.x.x"
 
   # .... omitted

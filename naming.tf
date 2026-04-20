@@ -6,7 +6,7 @@ resource "random_id" "id" {
   byte_length = 3
 }
 
-data "azurenoopsutils_resource_name" "vnet" {
+data "popsrox_resource_name" "vnet" {
   name          = var.workload_name
   resource_type = "azurerm_virtual_network"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -16,7 +16,7 @@ data "azurenoopsutils_resource_name" "vnet" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "firewall" {
+data "popsrox_resource_name" "firewall" {
   name          = var.workload_name
   resource_type = "azurerm_firewall"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -26,7 +26,7 @@ data "azurenoopsutils_resource_name" "firewall" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "firewall_policy" {
+data "popsrox_resource_name" "firewall_policy" {
   name          = var.workload_name
   resource_type = "azurerm_firewall_policy"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -36,7 +36,7 @@ data "azurenoopsutils_resource_name" "firewall_policy" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "snet" {
+data "popsrox_resource_name" "snet" {
   for_each      = var.hub_subnets
   name          = var.workload_name
   resource_type = "azurerm_subnet"
@@ -47,7 +47,7 @@ data "azurenoopsutils_resource_name" "snet" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "firewall_client_pub_ip" {
+data "popsrox_resource_name" "firewall_client_pub_ip" {
   name          = var.workload_name
   resource_type = "azurerm_public_ip"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -57,7 +57,7 @@ data "azurenoopsutils_resource_name" "firewall_client_pub_ip" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "firewall_mgt_pub_ip" {
+data "popsrox_resource_name" "firewall_mgt_pub_ip" {
   name          = var.workload_name
   resource_type = "azurerm_public_ip"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -67,7 +67,7 @@ data "azurenoopsutils_resource_name" "firewall_mgt_pub_ip" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "nsg" {
+data "popsrox_resource_name" "nsg" {
   for_each      = var.hub_subnets
   name          = var.workload_name
   resource_type = "azurerm_network_security_group"
@@ -78,7 +78,7 @@ data "azurenoopsutils_resource_name" "nsg" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "rt" {
+data "popsrox_resource_name" "rt" {
   name          = var.workload_name
   resource_type = "azurerm_route_table"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -88,7 +88,7 @@ data "azurenoopsutils_resource_name" "rt" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "afw_rt" {
+data "popsrox_resource_name" "afw_rt" {
   name          = var.workload_name
   resource_type = "azurerm_route_table"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -98,7 +98,7 @@ data "azurenoopsutils_resource_name" "afw_rt" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "st" {
+data "popsrox_resource_name" "st" {
   name          = random_id.uniqueString.hex
   resource_type = "azurerm_storage_account"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -106,7 +106,7 @@ data "azurenoopsutils_resource_name" "st" {
   use_slug      = var.use_naming
 }
 
-data "azurenoopsutils_resource_name" "bastion" {
+data "popsrox_resource_name" "bastion" {
   name          = var.workload_name
   resource_type = "azurerm_bastion_host"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -116,7 +116,7 @@ data "azurenoopsutils_resource_name" "bastion" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "bastion_pip" {
+data "popsrox_resource_name" "bastion_pip" {
   name          = var.workload_name
   resource_type = "azurerm_public_ip"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -126,7 +126,7 @@ data "azurenoopsutils_resource_name" "bastion_pip" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "ddos" {
+data "popsrox_resource_name" "ddos" {
   name          = var.workload_name
   resource_type = "azurerm_network_ddos_protection_plan"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -136,7 +136,7 @@ data "azurenoopsutils_resource_name" "ddos" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "pe" {
+data "popsrox_resource_name" "pe" {
   name          = var.workload_name
   resource_type = "azurerm_private_endpoint"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -146,7 +146,7 @@ data "azurenoopsutils_resource_name" "pe" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "psc" {
+data "popsrox_resource_name" "psc" {
   name          = var.workload_name
   resource_type = "azurerm_private_service_connection"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -156,7 +156,7 @@ data "azurenoopsutils_resource_name" "psc" {
   separator     = "-"
 }
 
-data "azurenoopsutils_resource_name" "nic" {
+data "popsrox_resource_name" "nic" {
   name          = var.workload_name
   resource_type = "azurerm_network_interface"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]

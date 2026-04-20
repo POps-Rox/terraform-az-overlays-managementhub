@@ -40,7 +40,7 @@ module "default_snet" {
   for_each   = var.hub_subnets
 
   # Resource Name
-  name = var.hub_snet_custom_name != null ? format("%s-%s", var.hub_snet_custom_name, each.key) : data.azurenoopsutils_resource_name.snet[each.key].result
+  name = var.hub_snet_custom_name != null ? format("%s-%s", var.hub_snet_custom_name, each.key) : data.popsrox_resource_name.snet[each.key].result
 
   # Virtual Networks
   virtual_network = {

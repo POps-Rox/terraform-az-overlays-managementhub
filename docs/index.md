@@ -8,7 +8,7 @@
 
 # Azure Management Virtual Network Hub Overlay with Firewall Terraform Module
 
-[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/azurenoops/overlays-management-hub/azurerm/)
+[![Changelog](https://img.shields.io/badge/changelog-release-green.svg)](CHANGELOG.md) [![Notice](https://img.shields.io/badge/notice-copyright-yellow.svg)](NOTICE) [![MIT License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE) [![TF Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/modules/POps-Rox/overlays-management-hub/azurerm/)
 
 This Terraform module deploys a Management Virtual Network Hub Overlay using the [Microsoft recommended Hub-Spoke network topology](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Usually, only one hub in each region with multiple spokes and each of the spokes can also be in separate subscriptions.
 
@@ -653,7 +653,7 @@ If you want to remotely access the network and the resources you've deployed you
 
 By default, this module will not create a Azure Bastion Host. You can enable/disable it by appending an argument `enable_bastion_host` located in `variables.bastion.tf` If you want to enable a Azure Bastion Host using this module, set argument `enable_bastion_host = true`.
 
-If you would like to create a jumpbox VM in the network, you can use the [Azure Bastion Jumpbox](https://registry.terraform.io/modules/azurenoops/overlays-virtual-machine/azurerm/latest) Virtual Machine module.
+If you would like to create a jumpbox VM in the network, you can use the [Azure Bastion Jumpbox](https://registry.terraform.io/modules/POps-Rox/overlays-virtual-machine/azurerm/latest) Virtual Machine module.
 
 ## Azure Firewall Premium
 

@@ -12,9 +12,9 @@ terraform {
       source  = "hashicorp/azurerm"
       version = ">= 3.7.0, < 4.0"
     }
-    popsrox-utils = {
+    popsrox = {
       source  = "POps-Rox/azutils"
-      version = "~> 1.0.4"
+      version = "~> 1.0"
     }
     random = {
       source  = "hashicorp/random"

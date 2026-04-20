@@ -13,7 +13,7 @@ terraform {
       version = ">= 3.7.0, < 4.0"
     }
     popsrox-utils = {
-      source  = "POps-Rox/popsrox-utils"
+      source  = "POps-Rox/azutils"
       version = "~> 1.0.4"
     }
     random = {

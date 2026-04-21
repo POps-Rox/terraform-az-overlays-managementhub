@@ -139,7 +139,7 @@ module "hub_firewall_management_pip" {
 #-----------------
 module "hub_fw" {
   source  = "azure/avm-res-network-azurefirewall/azurerm"
-  version = "0.3.0"
+  version = "0.4.0"
   count   = var.enable_firewall ? 1 : 0
 
   # Resource Group

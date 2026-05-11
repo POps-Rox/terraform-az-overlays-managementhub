@@ -9,7 +9,7 @@ AUTHOR/S: jrspinella
 */
 
 module "mod_default_pdz" {
-  source     = "github.com/POps-Rox/tf-az-overlays-privatednszone"
+  source     = "github.com/POps-Rox/terraform-az-overlays-privatednszone"
   depends_on = [module.mod_dns_rg]
 
   for_each = toset(var.enable_private_dns_zones ? [concat(local.if_default_private_dns_zones_enabled, var.private_dns_zones)] : [])

@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 module "mod_vnet_hub" {
-  #source  = "github.com/POps-Rox/tf-az-overlays-managementhub"
+  #source  = "github.com/POps-Rox/terraform-az-overlays-managementhub"
   #version = "x.x.x"
   source = "../../.."
 

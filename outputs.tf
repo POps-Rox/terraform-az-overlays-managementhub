@@ -30,7 +30,7 @@ output "virtual_network_id" {
 
 output "virtual_network_address_space" {
   description = "List of address spaces that are used the virtual network."
-  value       = module.hub_vnet.resource.body.properties.addressSpace.addressPrefixes
+  value       = module.hub_vnet.address_spaces
 }
 
 output "gateway_subnet_id" {
@@ -81,7 +81,7 @@ output "subnet_names" {
 
 output "subnet_address_prefixes" {
   description = "List of address prefix for subnets"
-  value       = flatten(concat([for s in module.default_snet : s.resource.body.properties.addressPrefixes], [var.gateway_subnet_address_prefix != null ? module.gw_snet[0].resource.body.properties.addressPrefixes : null], [(var.enable_firewall) ? module.firewall_client_snet[0].resource.body.properties.addressPrefixes : null], [(var.enable_forced_tunneling && var.firewall_management_snet_address_prefix != null) ? module.firewall_management_snet[0].resource.body.properties.addressPrefixes : null]))
+  value       = flatten(concat([for s in module.default_snet : s.address_prefixes], [var.gateway_subnet_address_prefix != null ? module.gw_snet[0].address_prefixes : null], [(var.enable_firewall) ? module.firewall_client_snet[0].address_prefixes : null], [(var.enable_forced_tunneling && var.firewall_management_snet_address_prefix != null) ? module.firewall_management_snet[0].address_prefixes : null]))
 }
 
 # Network Security group ids
@@ -104,7 +104,7 @@ output "network_security_group_names" {
 # DDoS Protection Plan
 output "ddos_protection_plan_id" {
   description = "Ddos protection plan details"
-  value       = var.create_ddos_plan ? module.hub_vnet_ddos[0].resource.id : null
+  value       = var.create_ddos_plan ? module.hub_vnet_ddos[0].resource_id : null
 }
 
 # Network Watcher

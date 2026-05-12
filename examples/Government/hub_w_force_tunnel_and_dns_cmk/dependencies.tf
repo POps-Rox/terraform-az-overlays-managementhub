@@ -21,7 +21,7 @@ resource "azurerm_log_analytics_workspace" "laws" {
 
 module "mod_shared_keyvault" {
   source  = "azure/avm-res-keyvault-vault/azurerm"
-  version = "0.9.1"
+  version = "0.10.2"
 
   # By default, this module will create a resource group and 
   # provide a name for an existing resource group. If you wish 

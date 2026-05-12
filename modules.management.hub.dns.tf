@@ -32,7 +32,7 @@ module "mod_default_pdz" {
 
 /* module "mod_default_pdz" {
   source  = "Azure/avm-ptn-network-private-link-private-dns-zones/azurerm"
-  version = "0.4.0"
+  version = "0.23.1"
   depends_on = [module.mod_dns_rg]
 
   for_each = toset(concat(local.if_default_private_dns_zones_enabled, var.private_dns_zones))

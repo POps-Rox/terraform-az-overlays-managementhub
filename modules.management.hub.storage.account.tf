@@ -7,12 +7,12 @@
 module "hub_st" {
   depends_on = [module.mod_scaffold_rg, module.mod_dns_rg]
   source     = "azure/avm-res-storage-storageaccount/azurerm"
-  version    = "0.2.7"
+  version    = "0.7.0"
 
   // Globals
-  resource_group_name = local.resource_group_name
-  name                = local.hub_sa_name
-  location            = local.location
+  parent_id = local.resource_group_id
+  name      = local.hub_sa_name
+  location  = local.location
 
   // Account 
   account_kind              = var.hub_storage_account_kind
@@ -76,18 +76,14 @@ module "hub_st" {
     }
   }
 
-  # Blob Properties
+  # Containers
   containers = var.hub_storage_containers
 
-  # Blob Properties
-  blob_properties = {
-    container_delete_retention_policy = {
-      days = 30
-    }
-    delete_retention_policy = {
-      days = 30
-    }
-  }
+  # NOTE: `blob_properties` (container_delete_retention_policy /
+  # delete_retention_policy) was removed in the v1.0.0 azapi rewrite of
+  # `avm-res-storage-storageaccount`. Configure blob-service retention via a
+  # `Microsoft.Storage/storageAccounts/blobServices@2024-01-01` azapi resource
+  # in the consuming root module if those policies are required.
 
   // Storage Diagnostic Settings
   diagnostic_settings_blob = var.existing_log_analytics_workspace_resource_id != null ? {

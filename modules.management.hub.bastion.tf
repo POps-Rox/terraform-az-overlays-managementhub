@@ -25,17 +25,15 @@ resource "random_string" "str" {
 #-----------------------------------------------------------------------
 module "abs_snet" {
   source     = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version    = "0.4.2"
+  version    = "0.17.1"
   depends_on = [module.hub_vnet]
   count      = (var.enable_bastion_host && var.azure_bastion_subnet_address_prefix != null) ? 1 : 0
 
   # Resource Name
   name = "AzureBastionSubnet"
 
-  # Virtual Networks
-  virtual_network = {
-    resource_id = module.hub_vnet.resource_id
-  }
+  # Parent virtual network
+  parent_id = module.hub_vnet.resource_id
 
   # Subnet Information
   address_prefixes = var.azure_bastion_subnet_address_prefix
@@ -49,7 +47,7 @@ module "abs_snet" {
 #---------------------------------------------
 module "hub_bastion_pip" {
   source  = "azure/avm-res-network-publicipaddress/azurerm"
-  version = "0.1.2"
+  version = "0.2.1"
 
   count               = var.enable_bastion_host ? 1 : 0
   name                = local.bastion_pip_name
@@ -87,7 +85,7 @@ module "hub_bastion_pip" {
 #---------------------------------------------
 module "hub_bastion_host" {
   source  = "azure/avm-res-network-bastionhost/azurerm"
-  version = "0.3.0"
+  version = "0.4.0"
 
   count = var.enable_bastion_host ? 1 : 0
 

@@ -13,20 +13,18 @@ AUTHOR/S: jrspinella
 #----------------------------------------------------------
 module "firewall_client_snet" {
   source  = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version = "0.4.2"
+  version = "0.17.1"
   count   = var.enable_firewall ? 1 : 0
 
   # Resource Name
   name = "AzureFirewallSubnet"
 
-  # Virtual Networks
-  virtual_network = {
-    resource_id = module.hub_vnet.resource_id
-  }
+  # Parent virtual network
+  parent_id = module.hub_vnet.resource_id
 
   # Subnet Information
-  address_prefixes  = var.firewall_subnet_address_prefix
-  service_endpoints = var.firewall_snet_service_endpoints
+  address_prefixes                = var.firewall_subnet_address_prefix
+  service_endpoints_with_location = length(var.firewall_snet_service_endpoints) > 0 ? [for s in var.firewall_snet_service_endpoints : { service = s }] : null
   # Applicable to the subnets which used for Private link endpoints or services
   private_endpoint_network_policies             = var.firewall_snet_private_endpoint_network_policies_enabled
   private_link_service_network_policies_enabled = var.firewall_snet_private_link_service_network_policies_enabled
@@ -37,20 +35,18 @@ module "firewall_client_snet" {
 #---------------------------------------------------------
 module "firewall_management_snet" {
   source  = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version = "0.4.2"
+  version = "0.17.1"
   count   = var.enable_firewall && var.enable_forced_tunneling ? 1 : 0
 
   # Resource Name
   name = "AzureFirewallManagementSubnet"
 
-  # Virtual Networks
-  virtual_network = {
-    resource_id = module.hub_vnet.resource_id
-  }
+  # Parent virtual network
+  parent_id = module.hub_vnet.resource_id
 
   # Subnet Information
-  address_prefixes  = var.firewall_management_snet_address_prefix
-  service_endpoints = var.firewall_management_snet_service_endpoints
+  address_prefixes                = var.firewall_management_snet_address_prefix
+  service_endpoints_with_location = length(var.firewall_management_snet_service_endpoints) > 0 ? [for s in var.firewall_management_snet_service_endpoints : { service = s }] : null
   # Applicable to the subnets which used for Private link endpoints or services
   private_endpoint_network_policies             = var.firewall_management_snet_private_endpoint_network_policies_enabled
   private_link_service_network_policies_enabled = var.firewall_management_snet_private_link_service_network_policies_enabled
@@ -70,7 +66,7 @@ resource "azurerm_public_ip_prefix" "firewall_pref" {
 
 module "hub_firewall_client_pip" {
   source  = "azure/avm-res-network-publicipaddress/azurerm"
-  version = "0.1.2"
+  version = "0.2.1"
 
   count               = var.enable_firewall ? 1 : 0
   name                = local.hub_firewall_client_pip_name
@@ -103,7 +99,7 @@ module "hub_firewall_client_pip" {
 
 module "hub_firewall_management_pip" {
   source  = "azure/avm-res-network-publicipaddress/azurerm"
-  version = "0.1.2"
+  version = "0.2.1"
 
   count               = var.enable_firewall && var.enable_forced_tunneling ? 1 : 0
   name                = local.hub_firewall_mgt_pip_name

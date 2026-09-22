@@ -7,7 +7,7 @@
 module "hub_st" {
   depends_on = [module.mod_scaffold_rg, module.mod_dns_rg]
   source     = "azure/avm-res-storage-storageaccount/azurerm"
-  version    = "0.7.0"
+  version    = "0.10.0"
 
   // Globals
   parent_id = local.resource_group_id

@@ -14,7 +14,7 @@ AUTHOR/S: jrspinella
 
 module "gw_snet" {
   source     = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version    = "0.17.1"
+  version    = "0.22.2"
   depends_on = [module.hub_vnet]
   count      = var.gateway_subnet_address_prefix != null ? 1 : 0
 
@@ -33,7 +33,7 @@ module "gw_snet" {
 
 module "default_snet" {
   source     = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version    = "0.17.1"
+  version    = "0.22.2"
   depends_on = [module.hub_vnet]
   for_each   = var.hub_subnets
 

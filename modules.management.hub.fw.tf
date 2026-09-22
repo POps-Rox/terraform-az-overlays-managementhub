@@ -13,7 +13,7 @@ AUTHOR/S: jrspinella
 #----------------------------------------------------------
 module "firewall_client_snet" {
   source  = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version = "0.17.1"
+  version = "0.22.2"
   count   = var.enable_firewall ? 1 : 0
 
   # Resource Name
@@ -35,7 +35,7 @@ module "firewall_client_snet" {
 #---------------------------------------------------------
 module "firewall_management_snet" {
   source  = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version = "0.17.1"
+  version = "0.22.2"
   count   = var.enable_firewall && var.enable_forced_tunneling ? 1 : 0
 
   # Resource Name

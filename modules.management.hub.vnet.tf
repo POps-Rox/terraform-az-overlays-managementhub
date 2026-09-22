@@ -12,7 +12,7 @@ AUTHOR/S: jrspinella
 
 module "hub_vnet" {
   source  = "azure/avm-res-network-virtualnetwork/azurerm"
-  version = "0.17.1"
+  version = "0.22.2"
 
   # Resource Group
   name      = local.hub_vnet_name

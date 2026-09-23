@@ -210,5 +210,5 @@ output "azure_bastion_host_id" {
 
 output "azure_bastion_host_fqdn" {
   description = "The resource ID of the Bastion Host"
-  value       = var.enable_bastion_host ? module.hub_bastion_host[0].resource.dns_name : null
+  value       = var.enable_bastion_host ? module.hub_bastion_host[0].dns_name : null
 }

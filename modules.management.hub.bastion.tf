@@ -24,8 +24,7 @@ resource "random_string" "str" {
 # Subnets Creation for Azure Bastion Service - at least /27 or larger.
 #-----------------------------------------------------------------------
 module "abs_snet" {
-  source     = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version    = "0.17.1"
+  source     = "./modules/virtualnetwork-azurerm5//modules/subnet"
   depends_on = [module.hub_vnet]
   count      = (var.enable_bastion_host && var.azure_bastion_subnet_address_prefix != null) ? 1 : 0
 
@@ -46,8 +45,7 @@ module "abs_snet" {
 # Public IP for Azure Bastion Service
 #---------------------------------------------
 module "hub_bastion_pip" {
-  source  = "azure/avm-res-network-publicipaddress/azurerm"
-  version = "0.2.1"
+  source = "./modules/publicipaddress-azurerm5"
 
   count               = var.enable_bastion_host ? 1 : 0
   name                = local.bastion_pip_name
@@ -84,15 +82,14 @@ module "hub_bastion_pip" {
 # Azure Bastion Service host
 #---------------------------------------------
 module "hub_bastion_host" {
-  source  = "azure/avm-res-network-bastionhost/azurerm"
-  version = "0.4.0"
+  source = "./modules/bastionhost-azurerm5"
 
   count = var.enable_bastion_host ? 1 : 0
 
   # Resource Group
-  name                = local.bastion_name
-  location            = local.location
-  resource_group_name = local.resource_group_name
+  name      = local.bastion_name
+  location  = local.location
+  parent_id = local.resource_group_id
 
   # Bastion Host
   copy_paste_enabled = var.enable_copy_paste
@@ -101,6 +98,7 @@ module "hub_bastion_host" {
   ip_configuration = {
     name                 = "${lower(local.bastion_name)}-ipconfig"
     subnet_id            = module.abs_snet[0].resource_id
+    create_public_ip     = false
     public_ip_address_id = module.hub_bastion_pip[0].public_ip_id
   }
   ip_connect_enabled     = var.enable_ip_connect

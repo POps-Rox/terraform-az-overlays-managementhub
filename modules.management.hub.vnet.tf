@@ -11,8 +11,7 @@ AUTHOR/S: jrspinella
 */
 
 module "hub_vnet" {
-  source  = "azure/avm-res-network-virtualnetwork/azurerm"
-  version = "0.17.1"
+  source = "./modules/virtualnetwork-azurerm5"
 
   # Resource Group
   name      = local.hub_vnet_name
@@ -58,8 +57,7 @@ module "hub_vnet" {
 # Ddos protection plan - Default is "false"
 #--------------------------------------------
 module "hub_vnet_ddos" {
-  source              = "azure/avm-res-network-ddosprotectionplan/azurerm"
-  version             = "0.3.0"
+  source              = "./modules/ddosprotection-azurerm5"
   count               = var.create_ddos_plan ? 1 : 0
   name                = local.ddos_plan_name
   resource_group_name = local.resource_group_name

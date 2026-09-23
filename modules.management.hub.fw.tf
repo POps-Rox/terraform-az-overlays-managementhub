@@ -12,9 +12,8 @@ AUTHOR/S: jrspinella
 # Firewall Subnet Creation or selection
 #----------------------------------------------------------
 module "firewall_client_snet" {
-  source  = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version = "0.17.1"
-  count   = var.enable_firewall ? 1 : 0
+  source = "./modules/virtualnetwork-azurerm5//modules/subnet"
+  count  = var.enable_firewall ? 1 : 0
 
   # Resource Name
   name = "AzureFirewallSubnet"
@@ -34,9 +33,8 @@ module "firewall_client_snet" {
 # Firewall Management Subnet Creation
 #---------------------------------------------------------
 module "firewall_management_snet" {
-  source  = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version = "0.17.1"
-  count   = var.enable_firewall && var.enable_forced_tunneling ? 1 : 0
+  source = "./modules/virtualnetwork-azurerm5//modules/subnet"
+  count  = var.enable_firewall && var.enable_forced_tunneling ? 1 : 0
 
   # Resource Name
   name = "AzureFirewallManagementSubnet"
@@ -65,8 +63,7 @@ resource "azurerm_public_ip_prefix" "firewall_pref" {
 }
 
 module "hub_firewall_client_pip" {
-  source  = "azure/avm-res-network-publicipaddress/azurerm"
-  version = "0.2.1"
+  source = "./modules/publicipaddress-azurerm5"
 
   count               = var.enable_firewall ? 1 : 0
   name                = local.hub_firewall_client_pip_name
@@ -98,8 +95,7 @@ module "hub_firewall_client_pip" {
 }
 
 module "hub_firewall_management_pip" {
-  source  = "azure/avm-res-network-publicipaddress/azurerm"
-  version = "0.2.1"
+  source = "./modules/publicipaddress-azurerm5"
 
   count               = var.enable_firewall && var.enable_forced_tunneling ? 1 : 0
   name                = local.hub_firewall_mgt_pip_name
@@ -134,9 +130,8 @@ module "hub_firewall_management_pip" {
 # Azure Firewall
 #-----------------
 module "hub_fw" {
-  source  = "azure/avm-res-network-azurefirewall/azurerm"
-  version = "0.3.0"
-  count   = var.enable_firewall ? 1 : 0
+  source = "./modules/azurefirewall-azurerm5"
+  count  = var.enable_firewall ? 1 : 0
 
   # Resource Group
   name                = local.hub_firewall_name

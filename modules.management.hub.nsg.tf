@@ -9,12 +9,11 @@ AUTHOR/S: jrspinella
 */
 
 module "nsg" {
-  source  = "azure/avm-res-network-networksecuritygroup/azurerm"
-  version = "0.5.1"
+  source = "./modules/networksecuritygroup-azurerm5"
 
   for_each = var.hub_subnets
 
-  name                = var.hub_nsg_custom_name != null ? format("%s_%s", var.hub_nsg_custom_name, each.key) : data.popsrox_resource_name.nsg[each.key].result
+  name                = try(trimspace(var.hub_nsg_custom_name), "") != "" ? format("%s_%s", var.hub_nsg_custom_name, each.key) : data.popsrox_resource_name.nsg[each.key].result
   resource_group_name = local.resource_group_name
   location            = local.location
   tags                = merge({ "ResourceName" = lower("nsg_${each.key}") }, local.default_tags, var.add_tags, )

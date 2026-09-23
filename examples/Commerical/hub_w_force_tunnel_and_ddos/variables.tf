@@ -128,8 +128,8 @@ variable "enable_traffic_analytics" {
 
 variable "hub_private_dns_zones" {
   description = "The private DNS zones of the hub virtual network."
-  type        = any
-  default     = {}
+  type        = list(string)
+  default     = []
 }
 
 variable "fw_client_snet_address_prefixes" {

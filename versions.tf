@@ -10,7 +10,7 @@ terraform {
     }
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 4.20"
+      version = ">= 5.0, < 6.0"
     }
     popsrox = {
       source  = "POps-Rox/azutils"

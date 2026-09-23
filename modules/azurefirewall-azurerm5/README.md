@@ -7,7 +7,10 @@ The upstream module is redistributed under the upstream MIT License, Copyright (
 
 ## Changes from upstream 0.4.0
 
-The following list was produced after running `diff -ru` against the upstream tag vendored here.
+The following list was produced after running `diff -ru` against upstream commit
+`afb64c30508354ec414b0b6194f4380be58a8b09`, which is what the Terraform Registry
+serves for version `0.4.0`. Upstream has not pushed a `v0.4.0` git tag, so the
+commit SHA is the durable reference.
 
 1. `terraform.tf`
    - `terraform.required_version`: upstream `~> 1.7` → vendored `>= 1.10`.

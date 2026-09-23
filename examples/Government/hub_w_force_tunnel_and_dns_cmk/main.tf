@@ -35,7 +35,7 @@ module "mod_vnet_hub" {
   # (Optional) Enable Customer Managed Key for Azure Storage Account
   enable_customer_managed_keys = true
   # Uncomment the following lines to enable Customer Managed Key for Azure Hub Storage Account
-  key_vault_resource_id               = module.mod_shared_keyvault.resource_id
+  key_vault_resource_id               = azurerm_key_vault.shared.id
   key_name                            = "cmk-for-storage-account"
   user_assigned_identity_id           = azurerm_user_assigned_identity.user_assigned_identity.id
   user_assigned_identity_principal_id = azurerm_user_assigned_identity.user_assigned_identity.principal_id

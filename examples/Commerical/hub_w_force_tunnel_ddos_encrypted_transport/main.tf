@@ -6,7 +6,6 @@ module "mod_vnet_hub" {
   #version = "x.x.x"
   source = "../../.."
 
-  depends_on = [azurerm_log_analytics_workspace.laws]
 
   ################################
   # Landing Zone Configuration  ##
@@ -43,8 +42,8 @@ module "mod_vnet_hub" {
   hub_subnets = var.hub_subnets
 
   # (Required) Log Analytics Workspace for Network Diagnostic Settings & Traffic Analytics
-  existing_log_analytics_workspace_resource_id = azurerm_resource_group.laws_rg.id
-  existing_log_analytics_workspace_id          = azurerm_log_analytics_workspace.laws.workspace_id
+  existing_log_analytics_workspace_resource_id = null
+  existing_log_analytics_workspace_id          = null
 
   # Enable Encrypted Transport
   enable_encrypted_transport                 = var.enable_encrypted_transport

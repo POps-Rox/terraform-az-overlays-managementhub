@@ -13,8 +13,7 @@ AUTHOR/S: jrspinella
 #--------------------------------------------------------------------------------------------------------
 
 module "gw_snet" {
-  source     = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version    = "0.17.1"
+  source     = "./modules/virtualnetwork-azurerm5//modules/subnet"
   depends_on = [module.hub_vnet]
   count      = var.gateway_subnet_address_prefix != null ? 1 : 0
 
@@ -32,13 +31,12 @@ module "gw_snet" {
 }
 
 module "default_snet" {
-  source     = "azure/avm-res-network-virtualnetwork/azurerm//modules/subnet"
-  version    = "0.17.1"
+  source     = "./modules/virtualnetwork-azurerm5//modules/subnet"
   depends_on = [module.hub_vnet]
   for_each   = var.hub_subnets
 
   # Resource Name
-  name = var.hub_snet_custom_name != null ? format("%s-%s", var.hub_snet_custom_name, each.key) : data.popsrox_resource_name.snet[each.key].result
+  name = try(trimspace(var.hub_snet_custom_name), "") != "" ? format("%s-%s", var.hub_snet_custom_name, each.key) : data.popsrox_resource_name.snet[each.key].result
 
   # Parent virtual network
   parent_id = module.hub_vnet.resource_id

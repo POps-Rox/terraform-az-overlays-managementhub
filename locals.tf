@@ -34,5 +34,5 @@ locals {
       "privatelink.siterecovery.windowsazure.us", "privatelink.purview.azure.us", "privatelink.purviewstudio.azure.us", "privatelink.vaultcore.usgovcloudapi.net", "privatelink.azconfig.azure.us",
       "privatelink.blob.core.usgovcloudapi.net", "privatelink.table.core.usgovcloudapi.net", "privatelink.queue.core.usgovcloudapi.net", "privatelink.file.core.usgovcloudapi.net",
       "privatelink.dfs.core.usgovcloudapi.net", "privatelink.${var.location}.azmk8s.us", "privatelink.monitor.azure.us", "privatelink.adx.monitor.azure.us",
-  "privatelink.oms.opinsights.azure.us", "privatelink.ods.opinsights.azure.us", "privatelink.agentsvc.azure-automation.us"] : null))
+  "privatelink.oms.opinsights.azure.us", "privatelink.ods.opinsights.azure.us", "privatelink.agentsvc.azure-automation.us"] : []))
 }

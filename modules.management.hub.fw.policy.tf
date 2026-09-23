@@ -18,9 +18,8 @@ AUTHOR/S: jrspinella
 # Azure Firewall Policy / Rules
 #----------------------------------------------
 module "hub_firewall_policy" {
-  source  = "azure/avm-res-network-firewallpolicy/azurerm"
-  version = "0.3.4"
-  count   = var.enable_firewall ? 1 : 0
+  source = "./modules/firewallpolicy-azurerm5"
+  count  = var.enable_firewall ? 1 : 0
 
   # Resource Group
   name                                     = local.hub_firewall_policy_name
@@ -50,8 +49,7 @@ module "hub_firewall_policy" {
 
 module "hub_fw_app_rule_collection_group" {
   depends_on = [module.hub_firewall_policy]
-  source     = "azure/avm-res-network-firewallpolicy/azurerm//modules/rule_collection_groups"
-  version    = "0.3.4"
+  source     = "./modules/firewallpolicy-azurerm5//modules/rule_collection_groups"
 
   count = var.enable_firewall ? 1 : 0
 
@@ -65,8 +63,7 @@ module "hub_fw_app_rule_collection_group" {
 
 module "hub_fw_nat_rule_collection_group" {
   depends_on = [module.hub_firewall_policy]
-  source     = "azure/avm-res-network-firewallpolicy/azurerm//modules/rule_collection_groups"
-  version    = "0.3.4"
+  source     = "./modules/firewallpolicy-azurerm5//modules/rule_collection_groups"
 
   count = var.enable_firewall ? 1 : 0
 
@@ -80,8 +77,7 @@ module "hub_fw_nat_rule_collection_group" {
 
 module "hub_fw_nw_rule_collection_group" {
   depends_on = [module.hub_firewall_policy]
-  source     = "azure/avm-res-network-firewallpolicy/azurerm//modules/rule_collection_groups"
-  version    = "0.3.4"
+  source     = "./modules/firewallpolicy-azurerm5//modules/rule_collection_groups"
 
   count = var.enable_firewall ? 1 : 0
 

@@ -32,7 +32,7 @@ module "mod_scaffold_rg" {
   org_name                = var.org_name
   environment             = var.deploy_environment
   workload_name           = var.workload_name
-  custom_rg_name          = var.custom_hub_resource_group_name != null ? var.custom_hub_resource_group_name : null
+  custom_rg_name          = try(trimspace(var.custom_hub_resource_group_name), "") != "" ? var.custom_hub_resource_group_name : null
 
   // Tags
   add_tags = merge(local.default_tags, var.add_tags, )
@@ -44,14 +44,14 @@ module "mod_scaffold_rg" {
 module "mod_dns_rg" {
   source = "github.com/POps-Rox/terraform-az-overlays-resourcegroup"
 
-  count = var.enable_private_dns_zones && length(var.private_dns_zones) > 0 ? 1 : 0
+  count = var.enable_private_dns_zones && length(concat(local.if_default_private_dns_zones_enabled, var.private_dns_zones)) > 0 ? 1 : 0
 
   location                = module.mod_azregions.location_cli
   use_location_short_name = var.use_location_short_name # Use the short location name in the resource group name
   org_name                = var.org_name
   environment             = var.deploy_environment
   workload_name           = "dns"
-  custom_rg_name          = var.custom_hub_resource_group_name != null ? var.custom_hub_resource_group_name : null
+  custom_rg_name          = try(trimspace(var.custom_hub_resource_group_name), "") != "" ? var.custom_hub_resource_group_name : null
 
   // Tags
   add_tags = merge(local.default_tags, var.add_tags, )

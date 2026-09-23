@@ -1,0 +1,14 @@
+Vendored module notice
+======================
+
+Upstream repository: Azure/terraform-azurerm-avm-res-network-ddosprotectionplan
+Terraform Registry source: Azure/avm-res-network-ddosprotectionplan/azurerm
+Upstream version vendored: v0.3.0
+Retrieval date: 2026-09-23
+
+This module is redistributed under the upstream MIT License, Copyright (c)
+Microsoft Corporation. The upstream MIT License text is retained unchanged in
+LICENSE in this directory.
+
+This vendored copy has been modified by POps-Rox for compatibility with
+azurerm 5.x consumers of terraform-az-overlays-managementhub.
